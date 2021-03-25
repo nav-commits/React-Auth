@@ -13,6 +13,12 @@ function App() {
    
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
+      if(user){
+        console.log('user signed in')
+      }
+      else{
+        console.log('no user')
+      }
       setUsers(user);
     });
   }
