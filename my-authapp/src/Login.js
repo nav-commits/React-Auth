@@ -3,6 +3,7 @@ import {useState} from 'react';
 import fire from "./fire.js";
 
 function Login() {
+
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
 
@@ -19,7 +20,6 @@ function Login() {
       });
   };
 
-
   const signup = e => {
     e.preventDefault();
     fire
@@ -34,10 +34,9 @@ function Login() {
   };
 
 
-
   return (
     <div className="App">
-          <form>
+          <form className="Form">
           <input
             name="email"
             type="email"
@@ -54,8 +53,8 @@ function Login() {
             onChange={e => setPassword(e.target.value)}
             value={password}
           />
-          <button onClick={login}>Login </button>
-          <button onClick={signup}>Sign Up </button>
+          <button className="Submit" onClick={login}>Login </button>
+          <button className="Submit" onClick={signup}>Sign Up </button>
         </form>
     </div>
   );

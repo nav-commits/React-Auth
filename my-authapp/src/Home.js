@@ -3,7 +3,6 @@ import fire from "./fire.js";
 
 
 function Home() {
-
   const logout = () => {
     fire.auth().signOut();
     };
