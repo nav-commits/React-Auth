@@ -1,6 +1,8 @@
 import './App.css';
 import fire from "./fire.js";
 import {useState,useEffect} from 'react';
+import Login from "./Login";
+import Home from "./Home";
 
 function App() {
   const [users,setUsers] = useState({})
@@ -12,17 +14,17 @@ function App() {
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       console.log(user);
-      if (user) {
+      if (users) {
         setUsers(user );
       } else {
-        setUsers({ user: null });
+        setUsers( {user: null });
       }
     });
   }
 
   return (
     <div className="App">
-      <h1>hello</h1>
+      {users? <Home/>: <Login/>}
     </div>
   );
 }

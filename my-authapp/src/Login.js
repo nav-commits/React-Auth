@@ -2,11 +2,11 @@ import './App.css';
 import {useState} from 'react';
 import fire from "./fire.js";
 
-function App() {
+function Login() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
 
-  login = e => {
+  const login = e => {
     e.preventDefault();
     fire
       .auth()
@@ -20,7 +20,7 @@ function App() {
   };
 
 
-  signup = e => {
+  const signup = e => {
     e.preventDefault();
     fire
       .auth()
@@ -43,7 +43,7 @@ function App() {
             type="email"
             id="email"
             placeholder="enter email"
-            onChange={handleChange}
+            onChange={e => setEmail(e.target.value)}
             value={email}
           />
           <input
@@ -51,7 +51,7 @@ function App() {
             type="password"
             id="password"
             placeholder="enter password"
-            onChange={handleChange}
+            onChange={e => setPassword(e.target.value)}
             value={password}
           />
           <button onClick={login}>Login </button>
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
