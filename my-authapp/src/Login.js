@@ -1,11 +1,23 @@
 import './App.css';
 import {useState} from 'react';
 import fire from "./fire.js";
+import firebase from "firebase";
 
 function Login() {
 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+
+  const googleProvider = new firebase.auth.GoogleAuthProvider()
+  
+  const signInWithGoogle = () => {
+    firebase.auth().signInWithPopup(googleProvider).then((res) => {
+      console.log(res.user)
+    }).catch((error) => {
+      console.log(error.message)
+    })
+  }
+
 
   const login = e => {
     e.preventDefault();
@@ -55,6 +67,7 @@ function Login() {
           />
           <button className="Submit" onClick={login}>Login </button>
           <button className="Submit" onClick={signup}>Sign Up </button>
+          <button className="Submit" onClick={signInWithGoogle}>Googlesignin </button>
         </form>
     </div>
   );
