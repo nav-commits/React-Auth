@@ -5,20 +5,15 @@ import Login from "./Login";
 import Home from "./Home";
 
 function App() {
-  const [users,setUsers] = useState({})
+  const [users,setUsers] = useState(null)
 
   useEffect(() => {
     authListener();
-    },[]);
-
+  });
+   
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (users) {
-        setUsers(user );
-      } else {
-        setUsers( {user: null });
-      }
+      setUsers(user);
     });
   }
 
