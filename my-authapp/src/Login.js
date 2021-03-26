@@ -2,22 +2,42 @@ import './App.css';
 import {useState} from 'react';
 import fire from "./fire.js";
 import firebase from "firebase";
-
+import {useEffect} from 'react';
 function Login() {
 
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+  const [googleusers,setusersGoogle] = useState(null)
 
   const googleProvider = new firebase.auth.GoogleAuthProvider()
-  
+
   const signInWithGoogle = () => {
-    firebase.auth().signInWithPopup(googleProvider).then((res) => {
+    firebase.auth().signInWithPopup(googleProvider)
+    .then((res) => {
       console.log(res.user)
+      console.log('in');
+      setusersGoogle(googleusers);
     }).catch((error) => {
       console.log(error.message)
+      console.log("failed")
     })
   }
 
+  useEffect(() => {
+    authListenertwo();
+  });
+   
+  const authListenertwo = () => {
+    fire.auth().onAuthStateChanged(user => {
+      if(user){
+        console.log('user signed in')
+      }
+      else{
+        console.log('no user')
+      }
+      setusersGoogle(googleusers);
+    });
+  }
 
   const login = e => {
     e.preventDefault();
@@ -50,10 +70,10 @@ function Login() {
     <div className="App">
           <form className="Form">
           <input
-            name="email"
+            name ="email"
             type="email"
             id="email"
-            placeholder="enter email"
+            placeholder="Enter Email"
             onChange={e => setEmail(e.target.value)}
             value={email}
           />
@@ -61,13 +81,13 @@ function Login() {
             name="password"
             type="password"
             id="password"
-            placeholder="enter password"
+            placeholder="Enter password"
             onChange={e => setPassword(e.target.value)}
             value={password}
           />
           <button className="Submit" onClick={login}>Login </button>
           <button className="Submit" onClick={signup}>Sign Up </button>
-          <button className="Submit" onClick={signInWithGoogle}>Googlesignin </button>
+          <button className="Submit" onClick={signInWithGoogle}>Google Sign in </button>
         </form>
     </div>
   );

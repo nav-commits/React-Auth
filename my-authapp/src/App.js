@@ -6,7 +6,7 @@ import Home from "./Home";
 
 function App() {
   const [users,setUsers] = useState(null)
-  
+
   useEffect(() => {
     authListener();
   });
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      {users? <Home/>: <Login/>}
+      {users? <Home/>:<Login/>}
     </div>
   );
 }
