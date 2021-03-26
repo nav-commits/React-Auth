@@ -20,12 +20,13 @@ function App() {
         console.log('no user')
       }
       setUsers(user);
+    
     });
   }
 
   return (
     <div className="App">
-      {users? <Home/>:<Login/>}
+          {users? <Home/>:<Login/>}
     </div>
   );
 }
