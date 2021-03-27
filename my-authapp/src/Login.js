@@ -32,7 +32,7 @@ function Login() {
       })
       .catch(err => {
         console.log(err);
-        setError('Password must be 6 characters or longer')
+        setError('Password must be 6 characters or longer or email already exists')
         setTimeout(() => {setError(false)}, 3000);
       });
   };
