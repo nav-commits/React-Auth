@@ -17,7 +17,6 @@ function Home() {
       fire.auth().onAuthStateChanged(user => {
         if(user){
           console.log('user signed in')
-          console.log(user.email)
           setemailUsers(user.email)
         }
         else{
@@ -30,7 +29,7 @@ function Home() {
   return (
     <div className="App">
       <h1>Logged In</h1>
-      <button onClick={logout}>Logout</button>
+      <button className="Submit" onClick={logout}>Logout</button>
       <h1>{useremail}</h1>
     </div>
   );

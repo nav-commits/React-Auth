@@ -1,26 +1,11 @@
 import './App.css';
 import {useState} from 'react';
 import fire from "./fire.js";
-import firebase from "firebase";
 
 function Login() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  
-
-  const googleProvider = new firebase.auth.GoogleAuthProvider()
-
-  const signInWithGoogle = () => {
-    firebase.auth().signInWithPopup(googleProvider)
-    .then((res) => {
-      console.log(res.user)
-      console.log('in');
-    }).catch((error) => {
-      console.log(error.message)
-      console.log("failed")
-    })
-  }
-
+  const [error,setError] = useState(null)
 
   const login = e => {
     e.preventDefault();
@@ -32,6 +17,7 @@ function Login() {
       })
       .catch(err => {
         console.log(err);
+        setError('The password is invalid or the user does not have a password')
       });
   };
 
@@ -45,6 +31,7 @@ function Login() {
       })
       .catch(err => {
         console.log(err);
+        setError('Password must be 6 characters or longer')
       });
   };
 
@@ -70,8 +57,12 @@ function Login() {
           />
           <button className="Submit" onClick={login}>Login </button>
           <button className="Submit" onClick={signup}>Sign Up </button>
-          <button className="Submit" onClick={signInWithGoogle}>Google Sign in </button>
         </form>
+        {error != null && (
+            <div className="error">
+              <h3 className="errmsg">{error}</h3>  
+            </div>
+          )}
     </div>
   );
 }
