@@ -5,7 +5,7 @@ import fire from "./fire.js";
 function Login() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  const [error,setError] = useState(null)
+  const [error,setError] = useState(false)
 
   const login = e => {
     e.preventDefault();
@@ -60,7 +60,7 @@ function Login() {
           <button className="Submit" onClick={login}>Login </button>
           <button className="Submit" onClick={signup}>Sign Up </button>
         </form>
-        {error != null && (
+        {error !== false && (
             <div className="error">
               <h3 className="errmsg">{error}</h3>  
             </div>
