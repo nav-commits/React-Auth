@@ -18,6 +18,7 @@ function Login() {
       .catch(err => {
         console.log(err);
         setError('The password is invalid or the user does not have a password')
+        setTimeout(() => {setError(false)}, 3000);
       });
   };
 
@@ -32,6 +33,7 @@ function Login() {
       .catch(err => {
         console.log(err);
         setError('Password must be 6 characters or longer')
+        setTimeout(() => {setError(false)}, 3000);
       });
   };
 
