@@ -31,7 +31,7 @@ function Home() {
   return (
   
     <div className="App">
-        {loading ? (
+        {loading === true ? (
           <div className="App">
               <h1>Loading User...</h1>
           </div>
