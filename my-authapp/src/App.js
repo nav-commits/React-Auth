@@ -20,7 +20,6 @@ const App = () => {
         console.log('no user')
       }
       setUsers(user);
-    
     });
   }
 
