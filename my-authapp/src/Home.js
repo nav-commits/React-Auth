@@ -2,7 +2,7 @@ import './App.css';
 import fire from "./fire.js";
 import {useEffect,useState} from 'react';
 
-function Home() {
+const Home = () => {
   const [useremail,setemailUsers] = useState('')
   const [loading,setLoading] = useState(false)
 
@@ -37,13 +37,12 @@ function Home() {
           </div>
         ) : (
           <div className="App">
-             <h1>Logged In</h1>
-              <button className="Submit" onClick={logout}>Logout</button>
+              <h1>Logged In</h1>
+                 <button className="Submit" onClick={logout}>Logout</button>
              <h1>{useremail}</h1> 
           </div>
         )}
-    </div>
-      
+    </div>   
    
   );
 }

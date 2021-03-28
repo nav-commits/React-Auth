@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react';
 import Login from "./Login";
 import Home from "./Home";
 
-function App() {
+const App = () => {
   const [users,setUsers] = useState(null)
 
   useEffect(() => {

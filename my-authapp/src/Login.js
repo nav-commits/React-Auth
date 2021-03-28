@@ -2,7 +2,7 @@ import './App.css';
 import {useState} from 'react';
 import fire from "./fire.js";
 
-function Login() {
+const Login = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState(false)
